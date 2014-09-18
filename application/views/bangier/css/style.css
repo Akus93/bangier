@@ -1,5 +1,14 @@
-h1 {
-    color:red;
+nav {
+
 }
 
+.search-btn {
+    border:none;
+    background-color: #f8f8f8;
+    height: 34px;
+    width: 30px;
+}
 
+.user-menu {
+    margin-left: 5em;
+}

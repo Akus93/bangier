@@ -22,7 +22,7 @@
             <nav class="navbar navbar-default" role="navigation">
               <div class="container-fluid">
                 <div class="navbar-header">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mobile-menu">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -31,26 +31,26 @@
                   <a class="navbar-brand" href="#"><?php echo $this->config->item('title') ?></a>
                 </div>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" >
+                <div class="collapse navbar-collapse" id="mobile-menu">
                   <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Glowna</a></li>
-                    <li><a href="#">Najlepsze</a></li>
-                    <li><a href="#">Poczekalnia</a></li>
+                    <li><a href="home">Najlepsze</a></li>
+                    <li><a href="poczekalnia">Poczekalnia</a></li>
                     <li><a href="#">Losuj</a></li>
                   </ul>
-                  <form class="navbar-form navbar-left" role="search">
-                    <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                  </form>
-                  <ul class="nav navbar-nav navbar-right">
+
+                  <ul class="nav navbar-nav navbar-right user-menu">
                     <li><a href="#">Log in</a></li>
                     <li><a href="#">Sign up</a></li>
                     
-                  </ul>
-                </div><!-- /.navbar-collapse -->
-              </div><!-- /.container-fluid -->
+                  </ul>                
+                    <form class="navbar-form navbar-right search" role="search">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Search...">
+                    </div>
+                    <button type="submit" class="glyphicon glyphicon-search search-btn"></button>
+                  </form>
+                </div>
+              </div>
             </nav>
         </header>
