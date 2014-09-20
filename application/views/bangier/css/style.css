@@ -2,6 +2,13 @@ nav {
 
 }
 
+#login-block {
+    display: block;
+    //text-align: center;
+    margin: auto;
+    width:300px;
+}
+
 .footer {
     background-color: #e7e7e7;
 }
@@ -15,4 +22,17 @@ nav {
 
 .user-menu {
     margin-left: 5em;
+}
+
+.login-group {
+    width:275px;
+}
+
+.error {
+    color:red;
+}
+
+.error-block {
+    display: block;
+    height: 20px;
 }

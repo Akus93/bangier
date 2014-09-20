@@ -23,7 +23,10 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[4]|max_length[32]|md5');
         }
         if($this->form_validation->run() == FALSE) {
-          $this->load->view('bangier/login');
+          
+           $this->load->view('bangier/template/header');
+           $this->load->view('bangier/login');
+           $this->load->view('bangier/template/footer');
         }
         else {
         $password = $this->input->post('password');
@@ -53,7 +56,10 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('con_password', 'Password confirmation', 'trim|required|matches[password]');
         
         if($this->form_validation->run() == FALSE) {
-          $this->load->view('bangier/signup');
+            
+            $this->load->view('bangier/template/header');
+            $this->load->view('bangier/signup');
+            $this->load->view('bangier/template/footer');
          }
         else {
           $name = $this->input->post('name');

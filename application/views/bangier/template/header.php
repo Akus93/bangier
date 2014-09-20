@@ -42,8 +42,8 @@
                   </ul>
 
                   <ul class="nav navbar-nav navbar-right user-menu">
-                    <li><a href="#">Log in</a></li>
-                    <li><a href="#">Sign up</a></li>
+                    <li><a href="login">Log in</a></li>
+                    <li><a href="signup">Sign up</a></li>
                     
                   </ul>                
                     <form class="navbar-form navbar-right search" role="search">
@@ -58,3 +58,5 @@
             </nav>
           
         </header>
+    <body>
+        <div class="container" > <!-- start main container -->

@@ -1,3 +1,4 @@
+</div> <!-- end main container -->
 <footer>
     <div class="navbar-fixed-bottom footer">
     <div class="container">
