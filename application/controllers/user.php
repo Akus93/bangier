@@ -13,6 +13,20 @@ class User extends CI_Controller {
     }
     
     public function login() {
+        $name = $this->input->post('name');
+        $password = $this->input->post('password');
+
+        if ($this->user_model->login($name, $password)) {
+            $session_data = array(
+                'name' => $name
+            );
+            $this->session->set_userdata($session_data);
+            echo 'Udalo sie zalogowac';
+        }
+        else
+        {
+            echo 'Zla nazwa lub haslo';
+        }
         
     }
     
@@ -39,12 +53,15 @@ class User extends CI_Controller {
     }
     
     public function account() {
-        $data['title'] = "My account";
-        $data['name'] = 'Akus';//$this->session->userdata('name');
-        
-        $this->load->view('bangier/template/header',$data);
-        $this->load->view('bangier/account',$data);
-        $this->load->view('bangier/template/footer');
+        if ($this->session->userdata('name') != '') {
+            $data['title'] = "My account";
+            $data['name'] = $this->session->userdata('name');
+
+            $this->load->view('bangier/template/header', $data);
+            $this->load->view('bangier/account', $data);
+            $this->load->view('bangier/template/footer');
+        }
+        else echo 'niezalogowany';
     }
     
 }
