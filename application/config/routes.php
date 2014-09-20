@@ -38,6 +38,10 @@
 |
 */
 
+$route['success'] = 'user/success';
+$route['logout'] = 'user/logout';
+$route['signup'] = 'user/signup';
+$route['login'] = 'user/login';
 $route['account'] = 'user/account';
 $route['poczekalnia'] = 'home/poczekalnia';
 $route['default_controller'] = 'home';

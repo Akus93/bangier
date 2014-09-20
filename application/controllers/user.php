@@ -13,10 +13,22 @@ class User extends CI_Controller {
     }
     
     public function login() {
-        $name = $this->input->post('name');
+        if ($this->session->userdata('name') != '') {
+            $this->account();
+        }
+        else {
+        $this->load->library('form_validation');
+        
+        $this->form_validation->set_rules('name', 'Username', 'trim|required|min_length[4]|xss_clean');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[4]|max_length[32]|md5');
+        }
+        if($this->form_validation->run() == FALSE) {
+          $this->load->view('bangier/login');
+        }
+        else {
         $password = $this->input->post('password');
-
-        if ($this->user_model->login($name, $password)) {
+        $name = $this->input->post('name');
+        if ($this->User_model->login($name, $password)) {
             $session_data = array(
                 'name' => $name
             );
@@ -27,15 +39,17 @@ class User extends CI_Controller {
         {
             echo 'Zla nazwa lub haslo';
         }
-        
+        } 
     }
     
     public function signup() {
+        if ($this->session->userdata('name') == '') {
+        
         $this->load->library('form_validation');
         
         $this->form_validation->set_rules('name', 'Username', 'trim|required|min_length[4]|xss_clean');
         $this->form_validation->set_rules('email', 'Email adress', 'trim|required|valid_email');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[4]|max_length[32]');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[4]|max_length[32]|md5');
         $this->form_validation->set_rules('con_password', 'Password confirmation', 'trim|required|matches[password]');
         
         if($this->form_validation->run() == FALSE) {
@@ -46,9 +60,12 @@ class User extends CI_Controller {
           $password = $this->input->post('password');
           $email = $this->input->post('email');
          
-          $this->user_model->signup($name, $password, $email);
-          $this->account();
+          $this->User_model->signup($name, $password, $email);
+          $this->success();
          }
+        }
+        else
+            echo "Jestes zalogowany";
        
     }
     
@@ -62,6 +79,17 @@ class User extends CI_Controller {
             $this->load->view('bangier/template/footer');
         }
         else echo 'niezalogowany';
+    }
+    
+    public function success(){
+            $this->load->view('bangier/template/header');
+            $this->load->view('bangier/success');
+            $this->load->view('bangier/template/footer');
+    }
+    
+    public function logout() {
+        $this->session->unset_userdata('name');
+        echo "wylogowano";
     }
     
 }
