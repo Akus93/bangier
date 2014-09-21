@@ -21,7 +21,7 @@ class User extends CI_Controller {
         
         $this->form_validation->set_rules('name', 'Username', 'trim|required|min_length[4]|xss_clean');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[4]|max_length[32]|md5');
-        }
+
         if($this->form_validation->run() == FALSE) {
           
            $this->load->view('bangier/template/header');
@@ -29,21 +29,20 @@ class User extends CI_Controller {
            $this->load->view('bangier/template/footer');
         }
         else {
-        $password = $this->input->post('password');
-        $name = $this->input->post('name');
-        if ($this->User_model->login($name, $password)) {
-            $session_data = array(
-                'name' => $name
-            );
-            $this->session->set_userdata($session_data);
-            echo 'Udalo sie zalogowac';
+            $password = $this->input->post('password');
+            $name = $this->input->post('name');
+            if ($this->User_model->login($name, $password)) {
+                $session_data = array(
+                    'name' => $name
+                );
+                $this->session->set_userdata($session_data);
+                echo 'Udalo sie zalogowac';
+            } else {
+                echo 'Zla nazwa lub haslo';
+            }
         }
-        else
-        {
-            echo 'Zla nazwa lub haslo';
-        }
-        } 
     }
+}
     
     public function signup() {
         if ($this->session->userdata('name') == '') {
