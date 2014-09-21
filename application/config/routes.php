@@ -38,7 +38,7 @@
 |
 */
 
-$route['success'] = 'user/success';
+$route['success'] = 'index.php/user/success';
 $route['logout'] = 'user/logout';
 $route['signup'] = 'user/signup';
 $route['login'] = 'user/login';
