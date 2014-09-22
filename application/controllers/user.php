@@ -65,8 +65,12 @@ class User extends CI_Controller {
           $password = $this->input->post('password');
           $email = $this->input->post('email');
          
-          $this->User_model->signup($name, $password, $email);
-          $this->success();
+          if($this->User_model->signup($name, $password, $email)) {
+              $this->success();
+          }
+            else {
+                echo 'Podany login lub email jest juz zajety!';
+            }
          }
         }
         else
