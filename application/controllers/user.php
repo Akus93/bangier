@@ -31,10 +31,9 @@ class User extends CI_Controller {
         else {
             $password = $this->input->post('password');
             $name = $this->input->post('name');
-            if ($this->User_model->login($name, $password)) {
-                $session_data = array(
-                    'name' => $name
-                );
+            $session_data = $this->User_model->login($name, $password);
+
+            if (count($session_data) != 0 ) {
                 $this->session->set_userdata($session_data);
                 echo 'Udalo sie zalogowac';
             } else {
@@ -74,7 +73,7 @@ class User extends CI_Controller {
          }
         }
         else
-            echo "Jestes zalogowany";
+            $this->account();
        
     }
     
@@ -82,12 +81,16 @@ class User extends CI_Controller {
         if ($this->session->userdata('name') != '') {
             $data['title'] = "My account";
             $data['name'] = $this->session->userdata('name');
+            $data['email'] = $this->session->userdata('email');
+            $data['date'] = $this->session->userdata('date');
 
             $this->load->view('bangier/template/header', $data);
             $this->load->view('bangier/account', $data);
             $this->load->view('bangier/template/footer');
         }
-        else echo 'niezalogowany';
+        else
+            $this->login();
+
     }
     
     public function success(){
@@ -97,7 +100,8 @@ class User extends CI_Controller {
     }
     
     public function logout() {
-        $this->session->unset_userdata('name');
+        //$this->session->unset_userdata('name');
+        $this->session->sess_destroy();
         echo "wylogowano";
     }
     

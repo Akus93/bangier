@@ -2,7 +2,7 @@
 
 class Home extends CI_Controller {
     
-    private function _loadView($data) {
+    private function _load_view($data) {
         $this->load->view('bangier/template/header');
         $this->load->view('bangier/home',$data);
         $this->load->view('bangier/template/footer');
@@ -21,7 +21,7 @@ class Home extends CI_Controller {
                 'author' => 'Nuriel'
             )
         );
-        $this->_loadView($data);
+        $this->_load_view($data);
     }
     
     public function poczekalnia() {
@@ -32,12 +32,12 @@ class Home extends CI_Controller {
                 'author' => 'Akusia'
             ),
             array(
-                'title' => 'Third',
-                'text' => 'Third text',
+                'title' => 'Fourth',
+                'text' => 'Fourth text',
                 'author' => 'Snafix'
             )
         );
-        $this->_loadView($data);
+        $this->_load_view($data);
     }
 }
 

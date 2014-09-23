@@ -13,13 +13,13 @@
         
         <script type="text/javascript" src="<?php echo base_url().APPPATH.'views/bangier/js/jquery-2.1.1.min.js' ?>"></script>
         <script type="text/javascript" src="<?php echo base_url().APPPATH.'views/bangier/js/bootstrap.min.js' ?>"></script>
-        
-        
+
         <title><?php echo $this->config->item('title') ?></title>
     </head>
     <body>
+
         <header>
-            
+
             <nav class="navbar navbar-default" role="navigation">
               <div class="container">
               <div class="container-fluid">
@@ -44,8 +44,8 @@
                   <ul class="nav navbar-nav navbar-right user-menu">
                     <li><a href="login">Log in</a></li>
                     <li><a href="signup">Sign up</a></li>
-                    
-                  </ul>                
+
+                  </ul>
                     <form class="navbar-form navbar-right search" role="search">
                     <div class="form-group">
                       <input type="text" class="form-control" placeholder="Search...">
@@ -56,7 +56,7 @@
               </div>
               </div>
             </nav>
-          
+
         </header>
     <body>
         <div class="container" > <!-- start main container -->

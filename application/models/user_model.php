@@ -4,9 +4,9 @@ class User_model extends CI_Model {
     
     public function login($name, $password) {
 
-        $query = $this->db->query("SELECT id,name,email,date,confirmed,rank FROM users WHERE name='".$name."' and password='".$password."' LIMIT 1");
+        $query = $this->db->query("SELECT id,name,email,date,confirmed FROM users WHERE name='".$name."' and password='".$password."' LIMIT 1");
         
-        if( $query->row() ) {
+        if( count($query->row()) != 0 ) {
             return $query->row();
         }
         else {
