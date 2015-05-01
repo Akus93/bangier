@@ -40,7 +40,7 @@ class User_model extends CI_Model {
                 return 1;
             }
             else echo "Blad z wyslaniem emaila";
-
+        //TEST GIT
         }
     }
     
